@@ -1,27 +1,38 @@
-# NgxSelectMultipleApp
+# ngx-select-multiple ([demo](https://danielfnz.github.io/ngx-select-multiple/))
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+`ngx-select-multiple` A angular(6+) search and multi-select dropdown component for angular
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* multi select dropdown
+* search dropdown list
 
-## Code scaffolding
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Install **ngx-select-multiple** through [npm](https://www.npmjs.com/package/ngx-select-multiple) package manager using the following command:
 
-## Build
+    ```bash
+    npm i ngx-select-multiple --save
+    ```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+2. Add NgxSelectMultipleModule into your AppModule class. app.module.ts would look like this:
 
-## Running unit tests
+    ```typescript
+    import {NgModule} from '@angular/core';
+    import {BrowserModule} from '@angular/platform-browser';
+    import {AppComponent} from './app.component';
+    import { NgxSelectMultipleModule } from 'ngx-select-ex';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    @NgModule({
+      imports: [BrowserModule, NgxSelectMultipleModule],
+      declarations: [AppComponent],
+      bootstrap: [AppComponent],
+    })
+    export class AppModule {
+    }
+    ```
+3. Add the tag `<ngx-select-multiple>` into some html
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    ```html
+    <ngx-select-multiple [items]="items" [(ngModel)]="itemId"></ngx-select-multiple>
+    ```
