@@ -121,6 +121,41 @@
           }
         }
       }
+    },
+    "ngx-select-multiple": {
+      "root": "projects/ngx-select-multiple",
+      "sourceRoot": "projects/ngx-select-multiple/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-select-multiple/tsconfig.lib.json",
+            "project": "projects/ngx-select-multiple/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-select-multiple/src/test.ts",
+            "tsConfig": "projects/ngx-select-multiple/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-select-multiple/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-select-multiple/tsconfig.lib.json",
+              "projects/ngx-select-multiple/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-select-multiple-app"

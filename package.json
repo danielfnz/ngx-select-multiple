@@ -1,6 +1,46 @@
 {
   "name": "ngx-select-multiple-app",
   "version": "0.0.0",
+  "description": "A angular(6+) search and multi-select dropdown component for angular",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "angular-2",
+    "angular-4",
+    "angular-6",
+    "angular2",
+    "angular4",
+    "angular6",
+    "ng2",
+    "ng4",
+    "ng6",
+    "ngx",
+    "dropdown",
+    "multiselect",
+    "multi-select",
+    "dropdown",
+    "custom",
+    "combobox",
+    "ng-select",
+    "ngx-select",
+    "ng2-select",
+    "ngx-select-multiple",
+    "ng-dropdown",
+    "ngx-dropdown",
+    "ng2-dropdown",
+    "ngx-multiple"
+  ],
+  "author": {
+    "name": "Daniel Leonardo de Souza Teixeira",
+    "email": "ufgdaniel@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielfnz/ngx-select-multiple.git"
+  },
+  "bugs": {
+    "url": "https://github.com/danielfnz/ngx-select-multiple/issues"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,6 +66,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
+    "@angular-devkit/build-ng-packagr": "~0.8.0",
     "@angular/cli": "~6.2.3",
     "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
@@ -40,8 +81,11 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^4.1.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
+    "tsickle": ">=0.29.0",
+    "tslib": "^1.9.0",
     "tslint": "~5.11.0",
     "typescript": "~2.9.2"
   }
