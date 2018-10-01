@@ -1,0 +1,27 @@
+<div class="ngx-select-multiple-container">
+  <label *ngIf="label !== ''">
+    {{label}}
+  </label>
+  <button type="button" class="ngx-dropdown-button" (click)="toggleSelectDropdown($event)">
+    <span>{{selectedDisplayText}} </span>
+    <span class="nsdicon-angle-down"></span>
+  </button>
+  <div class="ngx-dropdown-list-container" *ngIf="toggleDropdown" [style.maxHeight]="config.height">
+    <div class="search-container" *ngIf="config.search">
+      <input name="search" [(ngModel)]="searchText" />
+      <label [ngClass]="{'active': searchText}">
+        <span class="nsdicon-search"></span> Search</label>
+    </div>
+    <ul class="selected-items">
+      <li tabindex="-1" *ngFor="let selected of selectedItems;let i = index" (click)="deselectItem(selected,i)">
+        <span class="nsdicon-close"> {{selected[config.displayKey] || selected}}</span>
+      </li>
+    </ul>
+    <hr *ngIf="selectedItems.length > 0 && availableItems.length > 0" />
+    <ul class="available-items">
+      <li #availableOption *ngFor="let item of availableItems| filterBy: searchText | limitTo : config.limitTo;let i = index" tabindex="-1"
+        [ngClass]="{'active': focusedItemIndex == i}" (click)="selectItem(item,i)">
+        {{item[config.displayKey] || item}}</li>
+    </ul>
+  </div>
+</div>
