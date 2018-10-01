@@ -6,5 +6,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ngx-select-multiple-app';
+
+  items = [{
+    name: 'Banana',
+    value: 0,
+  }, {
+    name: 'Laranja',
+    value: 1,
+  }, {
+    name: 'Maracujá',
+    value: 2,
+  }, {
+    name: 'Morango',
+    value: 3,
+  }, {
+    name: 'Graviola',
+    value: 4,
+  }, {
+    name: 'Manga',
+    value: 5,
+  }, {
+    name: 'Limão',
+    value: 6,
+  }
+  ];
+
+  onValueChange(event) {
+    console.log(event);
+  }
 }
