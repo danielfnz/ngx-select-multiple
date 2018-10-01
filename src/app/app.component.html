@@ -1,2 +1,2 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<ngx-select-multiple label="Frutas" [options]="items" [config]="config"></ngx-select-multiple>
+<ngx-select-multiple label="Frutas" [items]="items" placeholder="Procurar..." nameKey="name" (valueChange)="onValueChange($event)"></ngx-select-multiple>

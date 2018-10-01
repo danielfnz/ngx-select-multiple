@@ -2,7 +2,6 @@ import { FilterByPipe } from './pipes/filter-by.pipe';
 import { NgModule } from '@angular/core';
 import { NgxSelectMultipleComponent } from './ngx-select-multiple.component';
 import { CommonModule } from '@angular/common';
-import { LimitToPipe } from './pipes/limit-to.pipe';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -10,7 +9,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule
   ],
-  declarations: [NgxSelectMultipleComponent, FilterByPipe, LimitToPipe],
+  declarations: [NgxSelectMultipleComponent, FilterByPipe],
   exports: [NgxSelectMultipleComponent]
 })
 export class NgxSelectMultipleModule { }
