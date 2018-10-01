@@ -47,7 +47,13 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build_lib": "ng build ngx-select-multiple",
+    "copy-license": "cp ./LICENSE dist/ngx-select-multiple",
+    "copy-readme": "cp ./README.md dist/ngx-select-multiple",
+    "copy-files": "npm run copy-license && npm run copy-readme",
+    "npm_pack": "cd dist/ngx-select-multiple && npm pack",
+    "package": "npm run build_lib && npm run copy-files && npm run npm_pack"
   },
   "private": true,
   "dependencies": {
