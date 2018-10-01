@@ -1,0 +1,30 @@
+sudo: required
+language: node_js
+node_js:
+  - stable
+
+branches:
+  only:
+    - master
+
+addons:
+  chrome: stable
+
+before_script:
+  - npm install -g @angular/cli
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - ng build --prod --base-href https://danielfnz.github.io/ngx-select-multiple/
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep-history: true
+  local-dir: ./dist/ngx-select-multiple-app
+  on:
+    branch: master
