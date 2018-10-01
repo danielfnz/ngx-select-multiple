@@ -34,7 +34,8 @@
 3. Add the tag `<ngx-select-multiple>` into some html
 
     ```html
-    <ngx-select-multiple [items]="items" [(ngModel)]="itemId"></ngx-select-multiple>
+    <ngx-select-multiple label="Frutas" [items]="items" placeholder="Procurar..." nameKey="name" (valueChange)="onValueChange($event)"></ngx-select-multiple>
+
     ```
 ## Help Improve
 
