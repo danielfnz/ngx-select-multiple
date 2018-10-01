@@ -18,7 +18,7 @@ cache:
     - node_modules
 
 script:
-  - ng build --prod --base-href https://danielfnz.github.io/ngx-select-multiple/
+  - npm run build_lib && ng build --prod --base-href https://danielfnz.github.io/ngx-select-multiple/
 
 deploy:
   provider: pages
