@@ -14,6 +14,24 @@ import {
   selector: 'ngx-select-multiple',
   templateUrl: './ngx-select-multiple.component.html',
   styleUrls: ['./ngx-select-multiple.component.scss'],
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        height: '165px',
+      })),
+      state('closed', style({
+        height: '0px',
+        display : 'none'
+      })),
+      transition('open => closed', [
+        animate('0.3s')
+      ]),
+      transition('closed => open', [
+        animate('0.3s')
+      ]),
+    ]),
+  ],
 })
 export class NgxSelectMultipleComponent implements OnInit, OnChanges {
 
@@ -66,12 +84,20 @@ export class NgxSelectMultipleComponent implements OnInit, OnChanges {
     this.items = this.items || [];
   }
 
-  toggleButtomDropdown($event: any) {
+  toggleButtomDropdown() {
     this.isOpen = !this.isOpen;
   }
 
   clearAll() {
-    console.log("Teste");
+    this.selectedItems = [];
+    this.valueChanged();
+
+    this.items.forEach(element => {
+      element['selected'] = false;
+    });
+
+    this.toggleButtomDropdown();
+
   }
 
   selectItem(item: string) {
