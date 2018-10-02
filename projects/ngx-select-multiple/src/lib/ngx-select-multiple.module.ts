@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { NgxSelectMultipleComponent } from './ngx-select-multiple.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   declarations: [NgxSelectMultipleComponent, FilterByPipe],
   exports: [NgxSelectMultipleComponent]
