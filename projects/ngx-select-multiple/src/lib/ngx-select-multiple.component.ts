@@ -1,13 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { HostListener } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  // ...
-} from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -15,34 +7,26 @@ import {
   templateUrl: './ngx-select-multiple.component.html',
   styleUrls: ['./ngx-select-multiple.component.scss'],
   animations: [
-    trigger('openClose', [
-      // ...
-      state('open', style({
-        height: '165px',
-      })),
-      state('closed', style({
-        height: '0px',
-        display : 'none'
-      })),
-      transition('open => closed', [
-        animate('0.3s')
-      ]),
-      transition('closed => open', [
-        animate('0.3s')
-      ]),
-    ]),
-  ],
+    trigger('openDropdown', [
+      state(
+        'open',
+        style({
+          height: '165px'
+        })
+      ),
+      state(
+        'closed',
+        style({
+          height: '0px',
+          display: 'none'
+        })
+      ),
+      transition('open => closed', [animate('0.3s')]),
+      transition('closed => open', [animate('0.3s')])
+    ])
+  ]
 })
 export class NgxSelectMultipleComponent implements OnInit, OnChanges {
-
-  @Input() items: any = [];
-  @Input() label = '';
-  @Input() placeholder = '';
-  @Input() nameKey = '';
-
-  @Output() valueChange: EventEmitter<any> = new EventEmitter();
-
-
   public isOpen = false;
   public availableItems: any = [];
   public selectedItems: any = [];
@@ -52,7 +36,13 @@ export class NgxSelectMultipleComponent implements OnInit, OnChanges {
   public focusedItemIndex: number = null;
   public notFound = false;
 
-  constructor() { }
+  @Input() items: any = [];
+  @Input() label = '';
+  @Input() placeholder = '';
+  @Input() displayKey = '';
+
+  @Output()
+  valueChange: EventEmitter<any> = new EventEmitter();
 
   @HostListener('click')
   clickInsideComponent() {
@@ -74,9 +64,9 @@ export class NgxSelectMultipleComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit() {
+  constructor() {}
 
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.selectedItems = [];
@@ -86,18 +76,6 @@ export class NgxSelectMultipleComponent implements OnInit, OnChanges {
 
   toggleButtomDropdown() {
     this.isOpen = !this.isOpen;
-  }
-
-  clearAll() {
-    this.selectedItems = [];
-    this.valueChanged();
-
-    this.items.forEach(element => {
-      element['selected'] = false;
-    });
-
-    this.toggleButtomDropdown();
-
   }
 
   selectItem(item: string) {
@@ -114,16 +92,25 @@ export class NgxSelectMultipleComponent implements OnInit, OnChanges {
     this.valueChanged();
   }
 
-  valueChanged() {
-    this.valueChange.emit(this.selectedItems);
-    this.setSelectedDisplayText();
+  clearAll() {
+    this.selectedItems = [];
+    this.valueChanged();
+
+    this.items.forEach(element => {
+      element['selected'] = false;
+    });
   }
 
-  setSelectedDisplayText() {
+  valueChanged() {
+    this.valueChange.emit(this.selectedItems);
+    this.setDisplayText();
+  }
+
+  setDisplayText() {
     if (this.selectedItems.length > 0) {
       this.selectedDisplayText = '';
       for (const iterator of this.selectedItems) {
-        this.selectedDisplayText += iterator[this.nameKey] + ', ';
+        this.selectedDisplayText += iterator[this.displayKey] + ', ';
       }
       // REMOVE LAST ','
       this.selectedDisplayText = this.selectedDisplayText.slice(0, -2);
